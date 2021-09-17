@@ -15,10 +15,11 @@ public class User {
     private int id;
     private String userName;
     private String password;
+    private int roleId;
     private String firstName;
     private String lastName;
     private String emailId;
-    private String mobileNumber;
+    private long mobileNumber;
     private String country;
     private String state;
     private String city;

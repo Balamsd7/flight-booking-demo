@@ -1,14 +1,14 @@
 package com.balamsd7.flightbooking.controller;
 
+import com.balamsd7.flightbooking.dto.ResponseDataDto;
 import com.balamsd7.flightbooking.dto.UserRegisterRequestDto;
 import com.balamsd7.flightbooking.service.RegisterService;
+import com.balamsd7.flightbooking.utils.APIResponseBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin
 @RequestMapping("/api/v1.0/flight/airline")
 @RestController
 public class RegisterController {
@@ -16,7 +16,7 @@ public class RegisterController {
     private RegisterService registerService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> userRegister(@RequestBody UserRegisterRequestDto userRegisterRequestDto){
-           return ResponseEntity.ok( registerService.userRegister(userRegisterRequestDto));
+    public ResponseEntity<ResponseDataDto> userRegister(@RequestBody UserRegisterRequestDto userRegisterRequestDto){
+           return APIResponseBuilder.buildResponseFromDto(registerService.userRegister(userRegisterRequestDto));
     }
 }
